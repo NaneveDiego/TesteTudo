@@ -1,9 +1,11 @@
 {
   "name": "testetudo",
   "version": "1.0.0",
-  "type": "module",
+  "type":"module",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,6 +14,7 @@
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9"
   }
 }
