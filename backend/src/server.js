@@ -1,6 +1,14 @@
 import express from 'express'
+import authRouter from './routes/authRoutes.js';
+import postRouter from './routes/postRoutes.js';
+import { connectDb } from './config/database.js';
 
 const app = express();
 
-app.listen(5000, ()=> console.log("server Ligado"))
-apa
+connectDb();
+app.use(express.json());
+app.use(authRouter);
+app.use(postRouter);
+
+
+app.listen(process.env.PORT, ()=> console.log(`Server running on port ${process.env.PORT}`))
