@@ -8,4 +8,10 @@ async function create(body, id) {
     
 }
 
-export default { create }
+async function findAllByUser(id) {
+    if(!id) throw new Error("User not found");
+
+    return await postRepository.findAllByUser(id);
+}
+
+export default { create, findAllByUser }

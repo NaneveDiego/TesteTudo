@@ -4,4 +4,9 @@ async function create(data){
     return await PostSchema.create(data);
 }
 
-export default { create };
+async function findAllByUser(id){
+    return await PostSchema.find({ userId: id });
+}
+
+
+export default { create, findAllByUser };

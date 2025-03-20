@@ -13,4 +13,15 @@ async function create (req, res) {
     }
 }
 
-export default { create }
+async function findAllByUser (req, res) {
+    const {_id: id} = res.locals.user;
+    try {
+        const posts = await postService.findAllByUser(id);
+        return res.status(200).send(posts);
+    } catch (error) {
+        return res.status(404).send(error.message);
+    }
+}
+
+
+export default { create, findAllByUser }

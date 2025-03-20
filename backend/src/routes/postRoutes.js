@@ -1,9 +1,15 @@
 import { Router } from "express";
 import postController from "../controllers/postController.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { validationSchemaMiddleware } from "../middlewares/validationSchemaMiddleware.js";
+import { createPostSchema } from "../schemas/validation/CreatePost.js";
 
 const postRouter = Router();
 
-postRouter.post("/post", authMiddleware ,postController.create);
+postRouter.use(authMiddleware);
+
+postRouter.post("/post",validationSchemaMiddleware(createPostSchema) ,postController.create);
+
+postRouter.get("/post" , postController.findAllByUser);
 
 export default postRouter;
