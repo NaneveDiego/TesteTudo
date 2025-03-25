@@ -5,6 +5,7 @@ async function signup(body) {
   const hasPassword = bcrypt.hashSync(body.password, 10);
   // codigo para adicionar salt
   // const salt = bcrypt.genSaltSync(10);
+  // teste
 
 
   const userExists = await authRepository.findByEmail(body.email);
