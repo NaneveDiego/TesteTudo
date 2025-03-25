@@ -35,6 +35,15 @@ form{
 .user{
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+.content{
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .coment{
@@ -54,4 +63,6 @@ form{
   margin-top: 20px;
 }
 
-
+#newpost{
+gap: 10px;
+}

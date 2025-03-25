@@ -4,6 +4,7 @@ import logo from '../assets/user.png';
 import Cookies from 'js-cookie';
 import {useEffect,useState } from 'react';
 import { userLogged } from '../services/user.js';
+import { findAllPosts } from '../services/posts.js';
 
 export default function Home(){
 
@@ -29,9 +30,19 @@ export default function Home(){
         }
     }
 
+    async function getPosts(){
+        try {
+            const response = await findAllPosts();
+            setPosts(response.data);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
     useEffect(() => { 
         validateToken();
         getUserLogged();
+        getPosts();
     },[])
 
     return (
@@ -42,20 +53,24 @@ export default function Home(){
                     <p>{user.name}</p>
                  <Link to="/signin">  <GoSignOut size={30} color="red" /> </Link> 
                 </div>
-
-                <div className='coments'>
-                   <div className='coment'> 
-                        <div className='user'>
-                        <img src={user} width={30} alt="" />
-                        <p>name</p>
+                {posts.length ? posts.map((post) => (
+                        <div key={post._id} className='post'>
+                            <div className='user'>
+                            
+                                <h3>{post.title}</h3>
+                            <p className='content'>{post.content}</p>
+                            </div >
                         </div>
-                        <p>exemplo</p>
-                   </div>
-                </div>
+                    )): <p></p>
+
+                        
+
+                }
+                
 
                 <div className='bottom'>
-                    <input type="text" placeholder="Digite seu comentário" />
-                    <button>Enviar</button>
+                   
+                  <Link to="/new"> <button>Criar post</button></Link> 
                 </div>
 
           </section>
