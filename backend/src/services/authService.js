@@ -3,6 +3,9 @@ import authRepository from "../repositories/authRepository.js";
 
 async function signup(body) {
   const hasPassword = bcrypt.hashSync(body.password, 10);
+  // codigo para adicionar salt
+  // const salt = bcrypt.genSaltSync(10);
+
 
   const userExists = await authRepository.findByEmail(body.email);
   if (userExists) {
