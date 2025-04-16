@@ -14,4 +14,12 @@ async function findAllByUser(id) {
     return await postRepository.findAllByUser(id);
 }
 
-export default { create, findAllByUser }
+async function findAll(){
+    return await postRepository.findAll()
+}
+
+async function findPostById(id){
+    return await postRepository.findPostById(id)
+}
+
+export default { create, findAllByUser, findAll, findPostById }

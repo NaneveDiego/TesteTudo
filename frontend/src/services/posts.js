@@ -3,8 +3,20 @@ import Cookies from "js-cookie";
 
 const baseURL = "http://localhost:5000";
 
-export function findAllPosts() {
+export function findAllPostsById() {
   const response = axios.get(`${baseURL}/post`,{headers: {Authorization: `Bearer ${Cookies.get('token')}`}});
+
+  return response;
+}
+
+export function findAll() {
+  const response = axios.get(`${baseURL}/post`,{headers: {Authorization: `Bearer ${Cookies.get('token')}`}});
+
+  return response;
+}
+
+export function findOnePostById(id){
+  const response = axios.get(`${baseURL}/post/${id}`,{headers: {Authorization: `Bearer ${Cookies.get('token')}`}});
 
   return response;
 }

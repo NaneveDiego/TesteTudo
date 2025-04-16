@@ -10,6 +10,8 @@ postRouter.use(authMiddleware);
 
 postRouter.post("/post",validationSchemaMiddleware(createPostSchema) ,postController.create);
 
-postRouter.get("/post" , postController.findAllByUser);
+postRouter.get("/post" , postController.findAll);
+
+postRouter.get("/post/:id" , postController.findPostById);
 
 export default postRouter;

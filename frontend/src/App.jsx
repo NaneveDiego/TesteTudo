@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import NewPage from "./pages/NewPost";
+import Post from "./pages/Post";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/new" element={<NewPage />} />
+          <Route path="/post/:id" element={<Post />} />
         </Routes>
     </main>
       </>
