@@ -8,6 +8,11 @@ async function create(body, id) {
     
 }
 
+async function edit(body, id) {
+    return await postRepository.edit({ ...body, _id: id });
+  }
+
+
 async function findAllByUser(id) {
     if(!id) throw new Error("User not found");
 
@@ -22,4 +27,8 @@ async function findPostById(id){
     return await postRepository.findPostById(id)
 }
 
-export default { create, findAllByUser, findAll, findPostById }
+async function deletePost(id){
+    return await postRepository.deletePost(id)
+}
+
+export default { create, findAllByUser, findAll, findPostById,edit,deletePost }

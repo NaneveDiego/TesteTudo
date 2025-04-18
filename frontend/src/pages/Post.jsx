@@ -1,39 +1,68 @@
-import { useParams } from 'react-router';
-import {findOnePostById} from '../services/posts.js'
+import { useParams,useNavigate } from "react-router";
+import { findOnePostById,deletePost } from "../services/posts.js";
 import { useEffect, useState } from "react";
+import { userLogged } from "../services/user.js";
+import { Link } from "react-router";
 
-export default function Post(){
-    
-    const [post, setPost] = useState([]);
-    const { id } = useParams();
-    
-    async function getPost(){
-        try {
-         const response = await findOnePostById(id);
-        console.log(response.data)
-         setPost(response.data)
-        
-            
-        } catch (error) {
-            console.log(error.message);
-        }
+export default function Post() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+  const [post, setPost] = useState([]);
+  const { id } = useParams();
 
+  async function getPost() {
+    try {
+      const response = await findOnePostById(id);
+      console.log(response.data);
+      setPost(response.data);
+    } catch (error) {
+      console.log(error.message);
     }
+  }
 
-    useEffect(() => {
-        getPost();
-      }, []);
+  async function getUserLogged() {
+    try {
+      const userResponse = await userLogged();
+      setUser(userResponse.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  async function deleteP() {
+    try {
+     await deletePost(id)
+     navigate("/");
+     
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-  
-  
-    return (
-        <div> 
-            {post._id} <br />
-            {post.title} <br />
-            {post.content} <br />
-            {post.userId?.name}
+  useEffect(() => {
+    getPost();
+    getUserLogged();
+  }, []);
+
+  return (
+    <div>
+      {post._id} <br />
+      {post.title} <br />
+      {post.content} <br />
+      {post.userId?.name}
+      {  (
+        <div>
+         <Link to={`/edit/${post._id}`}>
+          <button >Editar</button>
+         </Link>
+          <button onClick={deleteP}>Excluir</button>
         </div>
+      )}
+      <div>
+        <p>comentários</p>
+        <div>
 
-    );
-
+        </div>
+      </div>
+    </div>
+  );
 }

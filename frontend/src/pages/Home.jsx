@@ -31,6 +31,7 @@ export default function Home() {
   async function getPosts() {
     try {
       const response = await findAll();
+      console.log(response.data)
       setPosts(response.data);
     } catch (error) {
       console.log(error.message);
@@ -61,7 +62,7 @@ export default function Home() {
              <Link to={`/post/${post._id}`} >
              <p className="content">{post.content}</p>
              </Link> 
-              <p>{post.userId.name}</p>
+              <p>{post.userId?.name}</p>
             </div>
           </div>
         ))

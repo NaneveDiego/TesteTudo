@@ -27,3 +27,14 @@ export function createNewPost(body){
 
     return response;
 }
+export function editPost(body,id){
+    
+    const response = axios.patch(`${baseURL}/edit/${id}`,body,{headers: {Authorization: `Bearer ${Cookies.get('token')}`}});
+
+    return response;
+}
+export function deletePost(id){
+  const response = axios.delete(`${baseURL}/delete/${id}`,{headers: {Authorization: `Bearer ${Cookies.get('token')}`}});
+
+  return response;
+}

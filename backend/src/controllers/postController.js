@@ -13,6 +13,18 @@ async function create(req, res) {
   }
 }
 
+async function edit(req, res) {
+  const body = req.body;
+  const id = req.params.id;
+  //console.log(body, "controler")
+  try {
+    const post = await postService.edit(body, id);
+    return res.status(200).send(post);
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+}
+
 async function findAllByUser(req, res) {
   const { _id: id } = res.locals.user;
   try {
@@ -33,7 +45,7 @@ async function findAll(req, res) {
 }
 
 async function findPostById(req, res) {
-    const id  = req.params.id
+  const id = req.params.id;
   try {
     const post = await postService.findPostById(id);
     return res.status(200).send(post);
@@ -42,4 +54,14 @@ async function findPostById(req, res) {
   }
 }
 
-export default { create, findAllByUser, findAll, findPostById };
+async function deletePost(req, res) {
+  const id = req.params.id;
+  try {
+    const post = await postService.deletePost(id);
+    return res.status(200).send(post);
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+}
+
+export default { create, findAllByUser, findAll, findPostById, edit, deletePost };

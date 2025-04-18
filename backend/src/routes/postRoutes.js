@@ -14,4 +14,8 @@ postRouter.get("/post" , postController.findAll);
 
 postRouter.get("/post/:id" , postController.findPostById);
 
+postRouter.patch("/edit/:id" , postController.edit);
+
+postRouter.delete("/delete/:id" , postController.deletePost);
+
 export default postRouter;
