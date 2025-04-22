@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "db:up": "node src/config/migrations/migrations.js up",
+    "db:down": "node src/config/migrations/migrations.js down"
   },
   "author": "",
   "license": "ISC",

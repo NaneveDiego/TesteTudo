@@ -8,11 +8,11 @@ async function create(data){
 async function edit(data) {
     const { _id, title, content } = data;
   
-    const update = { title, content }; // campos que quer atualizar
+    const update = { title, content };
   
     const result = await PostSchema.findOneAndUpdate(
-      { _id },              // filtro
-      { $set: update },     // campos a atualizar
+      { _id },              
+      { $set: update },     
       { new: true, runValidators: true }
     );
   

@@ -6,7 +6,7 @@ const PostSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, require: true, ref: "users" },
   createdAt: { type: Date, default: Date.now() },
   tags: [
-    {nameTag: {type: String}}
+    
   ]
   
 });
