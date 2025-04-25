@@ -14,14 +14,14 @@ export const up = async () => {
     email: "admin@email.com",
     password: "123456",
     role: "admin",
-    features: ["delete_comments", "ban_user"]
+    features: ['delete_comments', 'ban_user']
   });
 
   const post = await Post.create({
     userId: user._id,
     title: "Bem-vindo ao fórum",
     content: "Este é o primeiro post oficial da plataforma.",
-    tags: ["introdução", "admin"]
+    tags: ['introdução', 'admin']
   });
 
   await Comment.create({
