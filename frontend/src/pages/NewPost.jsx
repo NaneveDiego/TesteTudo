@@ -12,9 +12,6 @@ import { createNewPost } from "../services/posts.js";
 
 export default function NewPage() {
 
-
-
-
   const navigate = useNavigate();
 
   const {
