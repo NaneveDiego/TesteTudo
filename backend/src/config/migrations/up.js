@@ -1,8 +1,11 @@
 import { connectDb, disconnectDb } from "../../config/database.js";
+import bcrypt from "bcrypt";
 
 import Comment from "../../schemas/Comments.js";
 import Post from "../../schemas/Post.js";
 import User from "../../schemas/User.js";
+
+const passwordEncrypted = bcrypt.hashSync('senha123', 10);
 
 export const up = async () => {
   await connectDb();
@@ -12,7 +15,7 @@ export const up = async () => {
   const user = await User.create({
     name: "Admin",
     email: "admin@email.com",
-    password: "123456",
+    password: passwordEncrypted,
     role: "admin",
     features: ['delete_comments', 'ban_user']
   });
