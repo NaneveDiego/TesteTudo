@@ -48,7 +48,7 @@ export default function Post() {
       {post._id} <br />
       {post.title} <br />
       {post.content} <br />
-      {post.userId?.name}
+      {!post.userId ? "loading" : post.userId?.name}
       {  (
         <div>
          <Link to={`/edit/${post._id}`}>
