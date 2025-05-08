@@ -1,32 +1,24 @@
 'use client'
 import { signin } from '@/app/auth/auth'
-import { useFormStatus } from 'react-dom';
+import { LoginButton } from '@/app/Components/LoginButton';
 import Link from 'next/link'
 import { useActionState } from 'react';
 
-export function LoginButton() {
-  const { pending } = useFormStatus();
 
-  return (
-    <button aria-disabled={pending} type="submit" className="mt-4 w-full">
-      {pending ? 'Submitting...' : 'Sign in'}
-    </button>
-  );
-}
 
 export default function SigninForm() {
   const [state, action] = useActionState(signin, undefined);
   return (
     <>
-      <form action={action}>
+      <form action={action} className='flex-col bg-gray-400 w-1/5'>
      
         <div>
-          <label htmlFor="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" />
+          <label className='p-1' htmlFor="email">Email:</label>
+          <input id="email" name="email" type="email" placeholder="Digite seu email" />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input id="password" name="password" type="password" />
+          <label className='p-1' htmlFor="password">Password:</label>
+          <input id="password" name="password" type="password" placeholder="Digite sua senha" />
         </div>
         <LoginButton />
       </form>
