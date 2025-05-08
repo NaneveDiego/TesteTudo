@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { NextURL } from "next/dist/server/web/next-url";
 import { Geist, Geist_Mono } from "next/font/google";
+
 
 
 const geistSans = Geist({
@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <h1>public</h1>
+        <h1 className="">public</h1>
         {children}
       </body>
     </html>

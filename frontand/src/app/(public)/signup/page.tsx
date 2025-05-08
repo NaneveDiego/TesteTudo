@@ -6,6 +6,10 @@ export default function SignupForm() {
   return (
     <>
       <form className=''>
+      <div>
+          <label htmlFor="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Email" />
+        </div>
         <div className=''>
           <label htmlFor="email">Email</label>
           <input id="email" name="email" type="email" placeholder="Email" />
