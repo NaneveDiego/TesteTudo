@@ -27,7 +27,7 @@ export async function signin(state: FormState, formData: FormData): Promise<Form
       return { message: 'Credenciais inválidas.' };
     }
 
-    const data = await res.text(); // Supondo { token: '...' }
+    const data = await res.text(); 
 
     if (!data) {
       return { message: 'Token não recebido.' };
@@ -39,7 +39,7 @@ export async function signin(state: FormState, formData: FormData): Promise<Form
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',
-      maxAge: 60 * 60 * 24 * 7, // 7 dias
+      maxAge: 60 * 60 * 24 * 7, 
     });
 
  

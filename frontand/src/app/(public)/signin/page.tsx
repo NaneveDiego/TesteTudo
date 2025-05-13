@@ -17,7 +17,7 @@ export default function SigninForm() {
           <input id="email" name="email" type="email" placeholder="Digite seu email" />
         </div>
         <div>
-          <label className='p-1' htmlFor="password">Password:</label>
+          <label className='p-2' htmlFor="password">Password:</label>
           <input id="password" name="password" type="password" placeholder="Digite sua senha" />
         </div>
         <LoginButton />
