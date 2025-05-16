@@ -37,6 +37,7 @@ export function middleware(request: NextRequest){
         return NextResponse.next()
     }
 
+    
     return NextResponse.next()
 }
 
@@ -50,5 +51,6 @@ export const config: MiddlewareConfig = {
          * - favicon.ico, sitemap.xml, robots.txt (metadata files)
          */
         '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+       
       ],
 }
